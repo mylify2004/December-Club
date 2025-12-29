@@ -13,8 +13,6 @@
       --gold3:#8b6a22;
 
       --wine:#5b0f22;
-      --wine2:#3e0a16;
-
       --ink:#120b0d;
 
       --paper:#f5ead0;
@@ -31,7 +29,7 @@
       font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
       color: var(--ink);
 
-      /* IMPORTANT: make sure background.jpg is in the same folder as index.html */
+      /* Put your image in the same folder as this file and name it background.jpg */
       background:
         radial-gradient(900px 650px at 18% 10%, rgba(255,255,255,.35), transparent 60%),
         radial-gradient(900px 650px at 85% 12%, rgba(255,255,255,.22), transparent 62%),
@@ -74,7 +72,6 @@
       z-index:0;
     }
 
-    /* Document-style frame (less "card", more "protocol") */
     .frame{
       width:min(980px, 100%);
       position:relative;
@@ -89,7 +86,6 @@
       overflow:hidden;
     }
 
-    /* outer double border */
     .frame::before{
       content:"";
       position:absolute; inset:0;
@@ -108,7 +104,6 @@
         inset 0 18px 40px rgba(0,0,0,.10);
     }
 
-    /* inner paper panel */
     .content{
       position:relative;
       z-index:1;
@@ -129,7 +124,6 @@
       gap: 14px;
     }
 
-    /* corner ticks (classic document feel) */
     .content::before{
       content:"";
       position:absolute;
@@ -151,7 +145,6 @@
         linear-gradient(var(--wine), var(--wine)) right 0 bottom 0 / 1px 34px no-repeat;
 
       opacity:.55;
-      filter: drop-shadow(0 0 0 rgba(0,0,0,0));
     }
 
     h1{
@@ -163,7 +156,6 @@
       text-shadow: 0 1px 0 rgba(255,255,255,.18);
     }
 
-    /* "Seal / invitation" button */
     .reveal-btn{
       margin-top: 10px;
       font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
@@ -207,7 +199,6 @@
     }
     .reveal-btn:active{ transform: translateY(1px); }
 
-    /* Hidden info panel */
     .panel{
       width:100%;
       max-width: 860px;
@@ -254,14 +245,26 @@
     }
     .section p:last-child{ margin-bottom:0; }
 
-    ul{
+    .bullets{
       margin: 8px 0 0;
       padding-left: 18px;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
       font-size: 14px;
       color: rgba(18,11,13,.88);
+      list-style: none;
     }
-    li{ margin: 6px 0; }
+    .bullets li{
+      margin: 6px 0;
+      position: relative;
+      padding-left: 16px;
+    }
+    .bullets li::before{
+      content: "•";
+      position:absolute;
+      left:0;
+      top:0;
+      color: rgba(18,11,13,.90);
+    }
 
     .emphasis{
       font-weight: 700;
@@ -332,6 +335,7 @@
         </button>
 
         <section class="panel" id="panel" aria-live="polite">
+
           <div class="section">
             <h2>December Club</h2>
             <p>
@@ -348,32 +352,26 @@
             <p>
               December Club provides a secured, invitation-based environment for private conversations and closed meetings, accessible globally.
             </p>
-            <p>
-              Members do not create rooms. Members do not host freely. All access is centrally managed.
-            </p>
-            <p>
-              Every meeting exists only in its moment. No recordings. No archives. No history.
-            </p>
-            <p class="emphasis">
+            <ul class="bullets">
+              <li>Members do not create rooms.</li>
+              <li>Members do not host freely.</li>
+              <li>All access is centrally managed.</li>
+              <li>Every meeting exists only in its moment.</li>
+              <li>No recordings.</li>
+              <li>No archives.</li>
+              <li>No history.</li>
+            </ul>
+            <p class="emphasis" style="margin-top:10px;">
               When a meeting ends, it leaves no trace.
             </p>
           </div>
 
           <div class="section">
             <h2>What We Offer</h2>
-            <ul>
+            <ul class="bullets">
               <li>Private audio/video meeting rooms</li>
               <li>Centralized access approval</li>
-              <li>No participant lists</li>
-              <li>No visible member counts</li>
-              <li>No public interaction</li>
-              <li>No discovery mechanisms</li>
             </ul>
-            <p class="emphasis" style="margin-top:10px;">Only you, your meeting, and the system.</p>
-            <p>
-              Special private occasions are held by invitation only.
-              Attendance is determined solely by the owner.
-            </p>
           </div>
 
           <div class="section">
@@ -382,8 +380,8 @@
             <div class="two-col">
               <div class="section" style="margin:0;">
                 <h2>Annual Membership</h2>
-                <p><span class="emphasis">50,000 AED / Year</span></p>
-                <ul>
+                <p class="emphasis">50,000 AED / Year</p>
+                <ul class="bullets">
                   <li>Access is granted upon issuance of your membership number.</li>
                   <li>Invitation is not guaranteed</li>
                   <li>Eligibility to request private meetings</li>
@@ -396,8 +394,8 @@
 
               <div class="section" style="margin:0;">
                 <h2>Elite</h2>
-                <p><span class="emphasis">Invitation / Special Consideration</span></p>
-                <ul>
+                <p class="emphasis">By invitation or special consideration only.</p>
+                <ul class="bullets">
                   <li>Initial elite term: 6 months</li>
                   <li>Continuation subject to approval</li>
                   <li>No standard membership required</li>
@@ -411,26 +409,36 @@
 
           <div class="section">
             <h2>Support the Protocol</h2>
+
             <div class="two-col">
               <div class="section" style="margin:0;">
                 <h2>General Support</h2>
-                <p>Voluntary support only. No membership. No privileges.</p>
+                <ul class="bullets">
+                  <li>Voluntary support only.</li>
+                  <li>No membership.</li>
+                  <li>No privileges.</li>
+                </ul>
               </div>
+
               <div class="section" style="margin:0;">
                 <h2>Special Support</h2>
-                <p>Subject to consideration for Elite status. No guarantees. No obligations.</p>
+                <ul class="bullets">
+                  <li>Subject to consideration for Elite status.</li>
+                  <li>No guarantees.</li>
+                  <li>No obligations.</li>
+                </ul>
+                <p style="margin-top:10px;">
+                  Support does not purchase access. It signals alignment.
+                </p>
               </div>
             </div>
-            <p style="margin-top:10px;">
-              Support does not purchase access. It signals alignment.
-            </p>
           </div>
 
           <div class="section">
             <h2>Selection Process</h2>
             <p>December Club does not allow direct registration.</p>
             <p>To be considered, submit your email for review.</p>
-            <ul>
+            <ul class="bullets">
               <li>Requests are evaluated manually</li>
               <li><span class="emphasis">Response may take up to two weeks</span></li>
               <li>Approval is not guaranteed</li>
@@ -441,16 +449,35 @@
 
           <div class="section">
             <h2>Request Consideration</h2>
-            <div class="emailbox">
+
+            <p class="emphasis" style="margin-bottom:10px;">Email: consideration@decemberclub.co</p>
+
+            <div class="emailbox" style="margin-bottom:10px;">
               <code>consideration@decemberclub.co</code>
-              <a href="mailto:consideration@decemberclub.co?subject=December%20Club%20%E2%80%94%20Request%20Consideration&body=Name:%0A%0ACountry/City:%0A%0AReason%20for%20request:%0A">
+              <a href="mailto:consideration@decemberclub.co?subject=December%20Club%20%E2%80%94%20Request%20Consideration&body=Name:%0A%0ACountry/City:%0A%0ARequest:%0A">
                 Email Request
               </a>
             </div>
+
+            <ul class="bullets">
+              <li>No participant lists</li>
+              <li>No visible member counts</li>
+              <li>No public interaction</li>
+              <li>No discovery mechanisms</li>
+            </ul>
+
+            <p class="emphasis" style="margin-top:10px;">Only you, your meeting, and the system.</p>
+
+            <ul class="bullets">
+              <li>Special private occasions are held by invitation only.</li>
+              <li>Attendance is determined solely by the owner.</li>
+            </ul>
+
             <div class="footer-note">
               December Club operates by invitation and review only.
             </div>
           </div>
+
         </section>
       </div>
     </main>
