@@ -1,167 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>December Club</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>December Club</title>
 
-    <style>
-        body {
-            margin: 0;
-            min-height: 100vh;
+  <style>
+    :root{
+      --wine: #7a1f2b;
+      --ink: #000;
+      --paper: rgba(255, 248, 230, 0.88);
+    }
 
-            background-image: url("background.jpg");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family:"Times New Roman", serif;
+      color:var(--ink);
 
-            font-family: "Times New Roman", serif;
-            color: #000;
-        }
+      /* الخلفية */
+      background-image: url("background.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
 
-        .container {
-            max-width: 900px;
-            margin: 80px auto;
-            padding: 60px;
+    .container{
+      max-width: 980px;
+      margin: 70px auto;
+      padding: 60px 70px;
 
-            background-color: rgba(255, 248, 230, 0.85);
-            border: 2px solid #7a1f2b;
-        }
+      background: var(--paper);
+      border: 2px solid var(--wine);
+      box-sizing: border-box;
+    }
 
-        h1 {
-            text-align: center;
-            font-size: 48px;
-            margin-bottom: 30px;
-            letter-spacing: 1px;
-        }
+    h1{
+      text-align:center;
+      font-size:54px;
+      margin: 0 0 18px 0;
+      letter-spacing: 1px;
+    }
 
-        h2 {
-            font-size: 24px;
-            margin-top: 40px;
-            margin-bottom: 15px;
-            border-bottom: 1px solid #7a1f2b;
-            padding-bottom: 5px;
-        }
+    .intro{
+      text-align:center;
+      font-size:18px;
+      line-height:1.8;
+      margin: 0 auto 25px auto;
+      max-width: 820px;
+    }
 
-        p {
-            font-size: 17px;
-            line-height: 1.7;
-            margin: 10px 0;
-        }
+    /* زر "Welcome..." */
+    .enterWrap{
+      text-align:center;
+      margin: 18px 0 40px 0;
+    }
+    .enter{
+      display:inline-block;
+      padding: 12px 18px;
+      border: 2px solid var(--wine);
+      color: var(--ink);
+      text-decoration:none;
+      font-size:16px;
+      letter-spacing: .2px;
+      background: rgba(255,255,255,0.35);
+    }
+    .enter:hover{
+      background: rgba(255,255,255,0.6);
+    }
 
-        ul {
-            margin-left: 25px;
-            font-size: 17px;
-            line-height: 1.7;
-        }
+    h2{
+      font-size: 28px;
+      margin: 40px 0 14px 0;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--wine);
+    }
 
-        li {
-            margin-bottom: 6px;
-        }
+    p{
+      font-size:18px;
+      line-height:1.85;
+      margin: 10px 0;
+    }
 
-        .center {
-            text-align: center;
-        }
-    </style>
+    ul{
+      margin: 12px 0 10px 28px;
+      font-size:18px;
+      line-height:1.85;
+    }
+
+    /* نخليها نقاط • واضحة مثل طلبك */
+    ul li{
+      list-style: none;
+      margin: 6px 0;
+      position: relative;
+      padding-left: 18px;
+    }
+    ul li::before{
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    .email{
+      font-size:18px;
+      margin-top: 10px;
+    }
+  </style>
 </head>
 
 <body>
-
-<div class="container">
-
+  <div class="container">
     <h1>December Club</h1>
 
-    <p class="center">
-        December Club is a private protocol.<br>
-        It is not a platform, not a service, and not a social network.<br>
-        It exists for individuals who require controlled communication,
-        absolute discretion, and the absence of digital trace.
+    <p class="intro">
+      December Club is a private protocol.<br>
+      It is not a platform, not a service, and not a social network.<br>
+      It exists for individuals who require controlled communication, absolute discretion, and the absence of digital trace.
     </p>
 
-    <h2>What December Club Is</h2>
+    <div class="enterWrap">
+      <a class="enter" href="#overview">Welcome to December Club, Click here</a>
+    </div>
+
+    <h2 id="overview">What December Club Is</h2>
     <p>
-        December Club provides a secured, invitation-based environment for private
-        conversations and closed meetings, accessible globally.
+      December Club provides a secured, invitation-based environment for private conversations and closed meetings, accessible globally.
     </p>
     <ul>
-        <li>Members do not create rooms.</li>
-        <li>Members do not host freely.</li>
-        <li>All access is centrally managed.</li>
-        <li>Every meeting exists only in its moment.</li>
-        <li>No recordings.</li>
-        <li>No archives.</li>
-        <li>No history.</li>
-        <li>When a meeting ends, it leaves no trace.</li>
+      <li>Members do not create rooms.</li>
+      <li>Members do not host freely.</li>
+      <li>All access is centrally managed.</li>
+      <li>Every meeting exists only in its moment.</li>
+      <li>No recordings.</li>
+      <li>No archives.</li>
+      <li>No history.</li>
+      <li>When a meeting ends, it leaves no trace.</li>
     </ul>
 
     <h2>What We Offer</h2>
     <ul>
-        <li>Private audio/video meeting rooms</li>
-        <li>Centralized access approval</li>
+      <li>Private audio/video meeting rooms</li>
+      <li>Centralized access approval</li>
     </ul>
 
     <h2>Membership Structure</h2>
     <p><strong>Annual Membership</strong></p>
     <ul>
-        <li>50,000 AED / Year</li>
-        <li>Access is granted upon issuance of your membership number.</li>
-        <li>Invitation is not guaranteed</li>
-        <li>Eligibility to request private meetings</li>
-        <li>Subject to approval and review</li>
-        <li>Membership does not imply exclusivity.</li>
-        <li>It implies eligibility.</li>
+      <li>50,000 AED / Year</li>
+      <li>Access is granted upon issuance of your membership number.</li>
+      <li>Invitation is not guaranteed</li>
+      <li>Eligibility to request private meetings</li>
+      <li>Subject to approval and review</li>
+      <li>Membership does not imply exclusivity.</li>
+      <li>It implies eligibility.</li>
     </ul>
 
     <p><strong>Elite</strong></p>
     <ul>
-        <li>By invitation or special consideration only.</li>
-        <li>Initial elite term: 6 months</li>
-        <li>Continuation subject to approval</li>
-        <li>No standard membership required</li>
-        <li>Elite status may be reviewed, renewed, or withdrawn without explanation.</li>
+      <li>By invitation or special consideration only.</li>
+      <li>Initial elite term: 6 months</li>
+      <li>Continuation subject to approval</li>
+      <li>No standard membership required</li>
+      <li>Elite status may be reviewed, renewed, or withdrawn without explanation.</li>
     </ul>
 
     <h2>Support the Protocol</h2>
     <p><strong>General Support</strong></p>
     <ul>
-        <li>Voluntary support only.</li>
-        <li>No membership.</li>
-        <li>No privileges.</li>
+      <li>Voluntary support only.</li>
+      <li>No membership.</li>
+      <li>No privileges.</li>
     </ul>
 
     <p><strong>Special Support</strong></p>
     <ul>
-        <li>Subject to consideration for Elite status.</li>
-        <li>No guarantees.</li>
-        <li>No obligations.</li>
-        <li>Support does not purchase access.</li>
-        <li>It signals alignment.</li>
+      <li>Subject to consideration for Elite status.</li>
+      <li>No guarantees.</li>
+      <li>No obligations.</li>
+      <li>Support does not purchase access.</li>
+      <li>It signals alignment.</li>
     </ul>
 
     <h2>Selection Process</h2>
     <ul>
-        <li>December Club does not allow direct registration.</li>
-        <li>To be considered, submit your email for review.</li>
-        <li>Requests are evaluated manually</li>
-        <li>Response may take up to two weeks</li>
-        <li>Approval is not guaranteed</li>
-        <li>Rejection receives no notification</li>
-        <li>Silence indicates non-selection</li>
+      <li>December Club does not allow direct registration.</li>
+      <li>To be considered, submit your email for review.</li>
+      <li>Requests are evaluated manually</li>
+      <li>Response may take up to two weeks</li>
+      <li>Approval is not guaranteed</li>
+      <li>Rejection receives no notification</li>
+      <li>Silence indicates non-selection</li>
     </ul>
 
     <h2>Request Consideration</h2>
-    <p>Email: <strong>consideration@decemberclub.co</strong></p>
+    <p class="email"><strong>Email:</strong> consideration@decemberclub.co</p>
 
     <ul>
-        <li>No participant lists</li>
-        <li>No visible member counts</li>
-        <li>No public interaction</li>
-        <li>No discovery mechanisms</li>
-        <li>Only you, your meeting, and the system.</li>
-        <li>Special private occasions are held by invitation only.</li>
-        <li>Attendance is determined solely by the owner.</li>
+      <li>No participant lists</li>
+      <li>No visible member counts</li>
+      <li>No public interaction</li>
+      <li>No discovery mechanisms</li>
+      <li>Only you, your meeting, and the system.</li>
+      <li>Special private occasions are held by invitation only.</li>
+      <li>Attendance is determined solely by the owner.</li>
     </ul>
-
-</div>
-
+  </div>
 </body>
 </html>
