@@ -1,336 +1,486 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>December Club</title>
-<meta name="description" content="December Club — Private Protocol" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>December Club</title>
+  <meta name="description" content="December Club — Private Protocol • Invitation & Review" />
 
-<style>
-:root{
-  --gold1:#f6e7b2;
-  --gold2:#d9b86a;
-  --gold3:#8b6a22;
-  --wine:#5b0f22;
-  --ink:#120b0d;
-  --paper:#f5ead0;
-  --paper2:#efe0bf;
-  --shadow: 0 26px 90px rgba(0,0,0,.42);
-}
+  <style>
+    :root{
+      --gold1:#f6e7b2;
+      --gold2:#d9b86a;
+      --gold3:#8b6a22;
 
-/* reset */
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0;
-  font-family: ui-serif, Georgia, "Times New Roman", serif;
-  color:var(--ink);
+      --wine:#5b0f22;
+      --wine2:#3e0a16;
 
-  background:
-    radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,.35), transparent 40%),
-    radial-gradient(2px 2px at 60% 70%, rgba(255,255,255,.25), transparent 40%),
-    radial-gradient(2px 2px at 80% 20%, rgba(255,255,255,.30), transparent 40%),
-    linear-gradient(145deg, var(--gold1), var(--gold2) 45%, var(--gold3));
-  background-size: 220px 220px, 260px 260px, 300px 300px, cover;
-}
+      --ink:#120b0d;
 
-/* layout */
-.wrap{
-  min-height:100%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:28px 16px;
-}
+      --paper:#f5ead0;
+      --paper2:#efe0bf;
 
-/* outer frame */
-.frame{
-  width:min(980px,100%);
-  padding:28px;
-  border-radius:18px;
-  background:linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,.06));
-  box-shadow:var(--shadow);
-  position:relative;
-}
-.frame::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  border-radius:18px;
-  border:2px solid rgba(91,15,34,.75);
-  pointer-events:none;
-}
-.frame::after{
-  content:"";
-  position:absolute;
-  inset:12px;
-  border-radius:14px;
-  border:1px solid rgba(91,15,34,.45);
-  pointer-events:none;
-}
+      --shadow: 0 26px 90px rgba(0,0,0,.42);
+      --radius: 14px;
+    }
 
-/* inner paper */
-.content{
-  position:relative;
-  padding:34px 18px 22px;
-  border-radius:12px;
-  background:
-    radial-gradient(900px 540px at 50% 0%, rgba(255,255,255,.34), transparent 62%),
-    linear-gradient(180deg, rgba(245,234,208,.95), rgba(239,224,191,.88));
-  border:1px solid rgba(91,15,34,.25);
-  text-align:center;
-}
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+      color: var(--ink);
 
-/* corner marks */
-.content::before{
-  content:"";
-  position:absolute;
-  inset:14px;
-  background:
-    linear-gradient(var(--wine),var(--wine)) left top / 30px 1px no-repeat,
-    linear-gradient(var(--wine),var(--wine)) left top / 1px 30px no-repeat,
-    linear-gradient(var(--wine),var(--wine)) right top / 30px 1px no-repeat,
-    linear-gradient(var(--wine),var(--wine)) right top / 1px 30px no-repeat,
-    linear-gradient(var(--wine),var(--wine)) left bottom / 30px 1px no-repeat,
-    linear-gradient(var(--wine),var(--wine)) left bottom / 1px 30px no-repeat,
-    linear-gradient(var(--wine),var(--wine)) right bottom / 30px 1px no-repeat,
-    linear-gradient(var(--wine),var(--wine)) right bottom / 1px 30px no-repeat;
-  opacity:.55;
-  pointer-events:none;
-}
+      /* IMPORTANT: make sure background.jpg is in the same folder as index.html */
+      background:
+        radial-gradient(900px 650px at 18% 10%, rgba(255,255,255,.35), transparent 60%),
+        radial-gradient(900px 650px at 85% 12%, rgba(255,255,255,.22), transparent 62%),
+        radial-gradient(1200px 900px at 50% 105%, rgba(0,0,0,.45), transparent 55%),
+        linear-gradient(145deg, var(--gold1), var(--gold2) 45%, var(--gold3)),
+        url("background.jpg");
+      background-size: auto, auto, auto, auto, cover;
+      background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+      background-position: center, center, center, center, center;
+      background-attachment: fixed;
+    }
 
-/* title */
-h1{
-  margin:0;
-  font-size:clamp(44px,6vw,68px);
-  letter-spacing:.6px;
-}
+    /* subtle grain + vignette */
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background:
+        radial-gradient(1200px 800px at 50% 30%, rgba(255,255,255,.10), transparent 60%),
+        radial-gradient(1200px 900px at 50% 110%, rgba(0,0,0,.55), transparent 55%),
+        repeating-linear-gradient(
+          0deg,
+          rgba(0,0,0,.010) 0px,
+          rgba(0,0,0,.010) 1px,
+          rgba(255,255,255,.010) 2px,
+          rgba(255,255,255,.010) 3px
+        );
+      mix-blend-mode: soft-light;
+      opacity:.75;
+    }
 
-/* button */
-.reveal-btn{
-  margin:20px auto 0;
-  padding:14px 18px;
-  font-size:16px;
-  font-family:inherit;
-  border-radius:12px;
-  background:linear-gradient(180deg, rgba(245,234,208,.95), rgba(230,210,168,.8));
-  border:1px solid rgba(91,15,34,.6);
-  cursor:pointer;
-}
+    .wrap{
+      min-height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 26px 16px;
+      position:relative;
+      z-index:0;
+    }
 
-/* panel */
-.panel{
-  display:none;
-  margin:22px auto 0;
-  max-width:860px;
-  padding:18px 16px;
-  border-radius:14px;
-  background:
-    radial-gradient(900px 480px at 50% 0%, rgba(255,255,255,.22), transparent 60%),
-    linear-gradient(180deg, rgba(245,234,208,.88), rgba(239,224,191,.82));
-  border:1px solid rgba(91,15,34,.35);
-  text-align:left;
-}
-.panel.show{display:block}
+    /* Document-style frame (less "card", more "protocol") */
+    .frame{
+      width:min(980px, 100%);
+      position:relative;
+      padding: 28px;
+      border-radius: 18px;
 
-/* sections — FIXED SPACING */
-.section{
-  padding:14px 12px;
-  border-radius:12px;
-  border:1px solid rgba(91,15,34,.18);
-  background:rgba(255,255,255,.10);
-}
-.section + .section{
-  margin-top:12px;
-}
+      background:
+        radial-gradient(900px 500px at 50% 0%, rgba(255,255,255,.25), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,.06));
 
-.section h2{
-  margin:0 0 6px;
-  font-size:12px;
-  letter-spacing:.9px;
-  text-transform:uppercase;
-  font-family:ui-sans-serif, system-ui, sans-serif;
-}
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
 
-.section p{
-  margin:0 0 10px;
-  font-size:14px;
-  line-height:1.6;
-  font-family:ui-sans-serif, system-ui, sans-serif;
-}
-.section p:last-child{margin-bottom:0}
+    /* outer double border */
+    .frame::before{
+      content:"";
+      position:absolute; inset:0;
+      border-radius: 18px;
+      border: 2px solid rgba(91,15,34,.75);
+      pointer-events:none;
+    }
+    .frame::after{
+      content:"";
+      position:absolute; inset:12px;
+      border-radius: 14px;
+      border: 1px solid rgba(91,15,34,.45);
+      pointer-events:none;
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.10),
+        inset 0 18px 40px rgba(0,0,0,.10);
+    }
 
-ul{
-  margin:6px 0 0;
-  padding-left:18px;
-  font-size:14px;
-  font-family:ui-sans-serif, system-ui, sans-serif;
-}
-li{margin:6px 0}
+    /* inner paper panel */
+    .content{
+      position:relative;
+      z-index:1;
 
-.emphasis{font-weight:700}
+      padding: 34px 18px 22px;
+      border-radius: 12px;
 
-/* columns */
-.two-col{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-}
-@media(max-width:820px){
-  .two-col{grid-template-columns:1fr}
-}
+      background:
+        radial-gradient(900px 540px at 50% 0%, rgba(255,255,255,.34), transparent 62%),
+        linear-gradient(180deg, rgba(245,234,208,.92), rgba(239,224,191,.86));
 
-/* email box */
-.emailbox{
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-  padding:12px;
-  border-radius:12px;
-  border:1px solid rgba(91,15,34,.28);
-  background:rgba(255,255,255,.14);
-}
-.emailbox code{
-  font-size:13px;
-  font-family:ui-monospace, monospace;
-}
-.emailbox a{
-  padding:10px 12px;
-  border-radius:12px;
-  border:1px solid rgba(91,15,34,.45);
-  text-decoration:none;
-  color:var(--ink);
-}
+      border: 1px solid rgba(91,15,34,.25);
 
-.footer-note{
-  margin-top:10px;
-  text-align:center;
-  font-size:12px;
-  font-family:ui-sans-serif, system-ui, sans-serif;
-}
-</style>
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      text-align:center;
+      gap: 14px;
+    }
+
+    /* corner ticks (classic document feel) */
+    .content::before{
+      content:"";
+      position:absolute;
+      inset: 14px;
+      border-radius: 10px;
+      pointer-events:none;
+
+      background:
+        linear-gradient(var(--wine), var(--wine)) left 0 top 0 / 34px 1px no-repeat,
+        linear-gradient(var(--wine), var(--wine)) left 0 top 0 / 1px 34px no-repeat,
+
+        linear-gradient(var(--wine), var(--wine)) right 0 top 0 / 34px 1px no-repeat,
+        linear-gradient(var(--wine), var(--wine)) right 0 top 0 / 1px 34px no-repeat,
+
+        linear-gradient(var(--wine), var(--wine)) left 0 bottom 0 / 34px 1px no-repeat,
+        linear-gradient(var(--wine), var(--wine)) left 0 bottom 0 / 1px 34px no-repeat,
+
+        linear-gradient(var(--wine), var(--wine)) right 0 bottom 0 / 34px 1px no-repeat,
+        linear-gradient(var(--wine), var(--wine)) right 0 bottom 0 / 1px 34px no-repeat;
+
+      opacity:.55;
+      filter: drop-shadow(0 0 0 rgba(0,0,0,0));
+    }
+
+    h1{
+      margin:0;
+      font-size: clamp(44px, 6.2vw, 70px);
+      letter-spacing: .6px;
+      font-weight: 600;
+      color: rgba(18,11,13,.92);
+      text-shadow: 0 1px 0 rgba(255,255,255,.18);
+    }
+
+    .hint{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      font-size: 12px;
+      letter-spacing: .2px;
+      color: rgba(18,11,13,.65);
+      max-width: 70ch;
+      display:none;
+    }
+
+    /* "Seal / invitation" button */
+    .reveal-btn{
+      margin-top: 10px;
+      font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+      font-size: 16px;
+      letter-spacing: .35px;
+
+      padding: 14px 18px;
+      border-radius: 12px;
+
+      background:
+        radial-gradient(300px 120px at 50% 0%, rgba(255,255,255,.25), transparent 60%),
+        linear-gradient(180deg, rgba(245,234,208,.92), rgba(230,210,168,.78));
+
+      color: rgba(18,11,13,.92);
+
+      border: 1px solid rgba(91,15,34,.60);
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.12),
+        0 10px 30px rgba(0,0,0,.18);
+
+      cursor:pointer;
+      user-select:none;
+      transition: transform .08s ease, box-shadow .22s ease, border-color .22s ease;
+      position:relative;
+    }
+
+    .reveal-btn::before{
+      content:"";
+      position:absolute;
+      inset:6px;
+      border-radius: 9px;
+      border: 1px solid rgba(91,15,34,.28);
+      pointer-events:none;
+    }
+
+    .reveal-btn:hover{
+      border-color: rgba(91,15,34,.82);
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.12),
+        0 14px 40px rgba(0,0,0,.22);
+    }
+    .reveal-btn:active{ transform: translateY(1px); }
+
+    /* Hidden info panel */
+    .panel{
+      width:100%;
+      max-width: 860px;
+      margin-top: 16px;
+
+      border-radius: var(--radius);
+      border: 1px solid rgba(91,15,34,.35);
+
+      background:
+        radial-gradient(900px 480px at 50% 0%, rgba(255,255,255,.22), transparent 60%),
+        linear-gradient(180deg, rgba(245,234,208,.85), rgba(239,224,191,.78));
+
+      padding: 18px 16px;
+      text-align:left;
+      display:none;
+
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.10),
+        0 18px 50px rgba(0,0,0,.18);
+    }
+    .panel.show{ display:block; }
+
+    .section{
+      padding: 14px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(91,15,34,.16);
+      background: rgba(255,255,255,.10);
+      margin-bottom: 12px;
+    }
+    .section h2{
+      margin:0 0 8px;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .9px;
+      color: rgba(18,11,13,.78);
+    }
+    .section p{
+      margin:0 0 10px;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      font-size: 14px;
+      line-height: 1.6;
+      color: rgba(18,11,13,.88);
+    }
+    .section p:last-child{ margin-bottom:0; }
+
+    ul{
+      margin: 8px 0 0;
+      padding-left: 18px;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      font-size: 14px;
+      color: rgba(18,11,13,.88);
+    }
+    li{ margin: 6px 0; }
+
+    .emphasis{
+      font-weight: 700;
+      letter-spacing:.2px;
+      color: rgba(18,11,13,.92);
+    }
+
+    .two-col{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 820px){
+      .two-col{ grid-template-columns: 1fr; }
+      .frame{ padding: 18px; }
+      .content{ padding: 26px 12px 16px; }
+    }
+
+    .emailbox{
+      display:flex;
+      gap: 10px;
+      align-items:center;
+      justify-content:space-between;
+      border-radius: 12px;
+      border: 1px solid rgba(91,15,34,.28);
+      background: rgba(255,255,255,.12);
+      padding: 12px 12px;
+      overflow:hidden;
+    }
+    .emailbox code{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 13px;
+      color: rgba(18,11,13,.90);
+      word-break: break-all;
+    }
+    .emailbox a{
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      font-size: 13px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(91,15,34,.45);
+      background: rgba(255,255,255,.18);
+      color: rgba(18,11,13,.92);
+      text-decoration:none;
+      white-space:nowrap;
+      transition: background .2s ease, border-color .2s ease;
+    }
+    .emailbox a:hover{ background: rgba(255,255,255,.24); border-color: rgba(91,15,34,.70); }
+
+    .footer-note{
+      text-align:center;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      font-size: 12px;
+      color: rgba(18,11,13,.70);
+      margin-top: 10px;
+    }
+  </style>
 </head>
 
 <body>
-<div class="wrap">
-<main class="frame">
-<div class="content">
+  <div class="wrap">
+    <main class="frame">
+      <div class="content">
+        <h1>December Club</h1>
 
-<h1>December Club</h1>
+        <button class="reveal-btn" id="revealBtn" type="button">
+          Welcome to December Club, Click here
+        </button>
 
-<button class="reveal-btn" id="revealBtn">
-Welcome to December Club, Click here
-</button>
+        <section class="panel" id="panel" aria-live="polite">
+          <div class="section">
+            <h2>December Club</h2>
+            <p>
+              December Club is a private protocol.<br/>
+              It is not a platform, not a service, and not a social network.
+            </p>
+            <p>
+              It exists for individuals who require controlled communication, absolute discretion, and the absence of digital trace.
+            </p>
+          </div>
 
-<section class="panel" id="panel">
+          <div class="section">
+            <h2>What December Club Is</h2>
+            <p>
+              December Club provides a secured, invitation-based environment for private conversations and closed meetings, accessible globally.
+            </p>
+            <p>
+              Members do not create rooms. Members do not host freely. All access is centrally managed.
+            </p>
+            <p>
+              Every meeting exists only in its moment. No recordings. No archives. No history.
+            </p>
+            <p class="emphasis">
+              When a meeting ends, it leaves no trace.
+            </p>
+          </div>
 
-<div class="section">
-<p>December Club is a private protocol.</p>
-<p>It is not a platform, not a service, and not a social network.</p>
-<p>It exists for individuals who require controlled communication, absolute discretion, and the absence of digital trace.</p>
-</div>
+          <div class="section">
+            <h2>What We Offer</h2>
+            <ul>
+              <li>Private audio/video meeting rooms</li>
+              <li>Centralized access approval</li>
+              <li>No participant lists</li>
+              <li>No visible member counts</li>
+              <li>No public interaction</li>
+              <li>No discovery mechanisms</li>
+            </ul>
+            <p class="emphasis" style="margin-top:10px;">Only you, your meeting, and the system.</p>
+            <p>
+              Special private occasions are held by invitation only.
+              Attendance is determined solely by the owner.
+            </p>
+          </div>
 
-<div class="section">
-<h2>What December Club Is</h2>
-<p>December Club provides a secured, invitation-based environment for private conversations and closed meetings, accessible globally.</p>
-<ul>
-<li>Members do not create rooms</li>
-<li>Members do not host freely</li>
-<li>All access is centrally managed</li>
-<li>Every meeting exists only in its moment</li>
-<li>No recordings</li>
-<li>No archives</li>
-<li>No history</li>
-</ul>
-<p class="emphasis">When a meeting ends, it leaves no trace.</p>
-</div>
+          <div class="section">
+            <h2>Membership Structure</h2>
 
-<div class="section">
-<h2>What We Offer</h2>
-<ul>
-<li>Private audio/video meeting rooms</li>
-<li>Centralized access approval</li>
-</ul>
-</div>
+            <div class="two-col">
+              <div class="section" style="margin:0;">
+                <h2>Annual Membership</h2>
+                <p><span class="emphasis">50,000 AED / Year</span></p>
+                <ul>
+                  <li>Access is granted upon issuance of your membership number.</li>
+                  <li>Invitation is not guaranteed</li>
+                  <li>Eligibility to request private meetings</li>
+                  <li>Subject to approval and review</li>
+                </ul>
+                <p style="margin-top:10px;">
+                  Membership does not imply exclusivity. It implies eligibility.
+                </p>
+              </div>
 
-<div class="section">
-<h2>Membership Structure</h2>
-<div class="two-col">
+              <div class="section" style="margin:0;">
+                <h2>Elite</h2>
+                <p><span class="emphasis">Invitation / Special Consideration</span></p>
+                <ul>
+                  <li>Initial elite term: 6 months</li>
+                  <li>Continuation subject to approval</li>
+                  <li>No standard membership required</li>
+                </ul>
+                <p style="margin-top:10px;">
+                  Elite status may be reviewed, renewed, or withdrawn without explanation.
+                </p>
+              </div>
+            </div>
+          </div>
 
-<div class="section">
-<h2>Annual Membership</h2>
-<p class="emphasis">50,000 AED / Year</p>
-<ul>
-<li>Access is granted upon issuance of your membership number</li>
-<li>Invitation is not guaranteed</li>
-<li>Eligibility to request private meetings</li>
-<li>Subject to approval and review</li>
-</ul>
-<p>Membership does not imply exclusivity. It implies eligibility.</p>
-</div>
+          <div class="section">
+            <h2>Support the Protocol</h2>
+            <div class="two-col">
+              <div class="section" style="margin:0;">
+                <h2>General Support</h2>
+                <p>Voluntary support only. No membership. No privileges.</p>
+              </div>
+              <div class="section" style="margin:0;">
+                <h2>Special Support</h2>
+                <p>Subject to consideration for Elite status. No guarantees. No obligations.</p>
+              </div>
+            </div>
+            <p style="margin-top:10px;">
+              Support does not purchase access. It signals alignment.
+            </p>
+          </div>
 
-<div class="section">
-<h2>Elite</h2>
-<ul>
-<li>By invitation or special consideration only</li>
-<li>Initial elite term: 6 months</li>
-<li>Continuation subject to approval</li>
-<li>No standard membership required</li>
-</ul>
-<p>Elite status may be reviewed, renewed, or withdrawn without explanation.</p>
-</div>
+          <div class="section">
+            <h2>Selection Process</h2>
+            <p>December Club does not allow direct registration.</p>
+            <p>To be considered, submit your email for review.</p>
+            <ul>
+              <li>Requests are evaluated manually</li>
+              <li><span class="emphasis">Response may take up to two weeks</span></li>
+              <li>Approval is not guaranteed</li>
+              <li>Rejection receives no notification</li>
+              <li>Silence indicates non-selection</li>
+            </ul>
+          </div>
 
-</div>
-</div>
+          <div class="section">
+            <h2>Request Consideration</h2>
+            <div class="emailbox">
+              <code>consideration@decemberclub.co</code>
+              <a href="mailto:consideration@decemberclub.co?subject=December%20Club%20%E2%80%94%20Request%20Consideration&body=Name:%0A%0ACountry/City:%0A%0AReason%20for%20request:%0A">
+                Email Request
+              </a>
+            </div>
+            <div class="footer-note">
+              December Club operates by invitation and review only.
+            </div>
+          </div>
+        </section>
 
-<div class="section">
-<h2>Support the Protocol</h2>
-<p><strong>General Support</strong> — Voluntary support only. No membership. No privileges.</p>
-<p><strong>Special Support</strong> — Subject to consideration for Elite status. No guarantees. No obligations.</p>
-<p>Support does not purchase access. It signals alignment.</p>
-</div>
+        <p class="hint" id="hint">
+          Owner-only features like membership-number issuance & login will be added later.
+        </p>
+      </div>
+    </main>
+  </div>
 
-<div class="section">
-<h2>Selection Process</h2>
-<p>December Club does not allow direct registration.</p>
-<p>To be considered, submit your email for review.</p>
-<ul>
-<li>Requests are evaluated manually</li>
-<li>Response may take up to two weeks</li>
-<li>Approval is not guaranteed</li>
-<li>Rejection receives no notification</li>
-<li>Silence indicates non-selection</li>
-</ul>
-</div>
+  <script>
+    const btn = document.getElementById('revealBtn');
+    const panel = document.getElementById('panel');
+    const hint = document.getElementById('hint');
 
-<div class="section">
-<h2>Request Consideration</h2>
-<div class="emailbox">
-<code>consideration@decemberclub.co</code>
-<a href="mailto:consideration@decemberclub.co">Email Request</a>
-</div>
-<p class="footer-note">
-No participant lists • No visible member counts • No public interaction • No discovery mechanisms  
-<br/>Only you, your meeting, and the system.  
-<br/>Special private occasions are held by invitation only. Attendance is determined solely by the owner.
-</p>
-</div>
-
-</section>
-
-</div>
-</main>
-</div>
-
-<script>
-const btn = document.getElementById("revealBtn");
-const panel = document.getElementById("panel");
-btn.onclick = () => {
-  panel.classList.toggle("show");
-  btn.textContent = panel.classList.contains("show")
-    ? "Close"
-    : "Welcome to December Club, Click here";
-};
-</script>
+    btn.addEventListener('click', () => {
+      const isShown = panel.classList.toggle('show');
+      hint.style.display = isShown ? 'block' : 'none';
+      btn.textContent = isShown ? 'Close' : 'Welcome to December Club, Click here';
+      if (isShown) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  </script>
 </body>
 </html>
