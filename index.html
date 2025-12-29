@@ -163,16 +163,6 @@
       text-shadow: 0 1px 0 rgba(255,255,255,.18);
     }
 
-    .hint{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      font-size: 12px;
-      letter-spacing: .2px;
-      color: rgba(18,11,13,.65);
-      max-width: 70ch;
-      display:none;
-    }
-
     /* "Seal / invitation" button */
     .reveal-btn{
       margin-top: 10px;
@@ -462,10 +452,6 @@
             </div>
           </div>
         </section>
-
-        <p class="hint" id="hint">
-          Owner-only features like membership-number issuance & login will be added later.
-        </p>
       </div>
     </main>
   </div>
@@ -473,11 +459,9 @@
   <script>
     const btn = document.getElementById('revealBtn');
     const panel = document.getElementById('panel');
-    const hint = document.getElementById('hint');
 
     btn.addEventListener('click', () => {
       const isShown = panel.classList.toggle('show');
-      hint.style.display = isShown ? 'block' : 'none';
       btn.textContent = isShown ? 'Close' : 'Welcome to December Club, Click here';
       if (isShown) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
