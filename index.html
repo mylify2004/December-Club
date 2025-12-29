@@ -7,16 +7,13 @@
 
   <style>
     :root{
-      /* Gold */
-      --gold1:#f7e6b4;
-      --gold2:#e2c36a;
-      --gold3:#bf8f2f;
-
-      /* Wine */
       --wine:#6f1422;
-
-      /* Text */
       --text:#0b0b0b;
+
+      /* gold */
+      --g1:#f6e3b0;
+      --g2:#e0bf63;
+      --g3:#b6852a;
     }
 
     *{box-sizing:border-box}
@@ -26,67 +23,84 @@
       margin:0;
       font-family:"Times New Roman", Georgia, serif;
       color:var(--text);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:32px 14px;
 
-      /* GOLD + subtle texture + damask-like pattern */
+      /* GOLD + subtle damask-ish texture (soft, not childish) */
       background:
-        /* soft shine */
-        radial-gradient(circle at 30% 20%, rgba(255,255,255,.35), transparent 40%),
-        radial-gradient(circle at 70% 30%, rgba(255,255,255,.22), transparent 45%),
-        radial-gradient(circle at 50% 85%, rgba(0,0,0,.10), transparent 55%),
-
-        /* damask-ish pattern (transparent) */
-        repeating-radial-gradient(circle at 20% 25%, rgba(111,20,34,.10) 0 2px, transparent 2px 28px),
-        repeating-radial-gradient(circle at 80% 75%, rgba(111,20,34,.08) 0 2px, transparent 2px 30px),
-        repeating-linear-gradient(45deg, rgba(111,20,34,.06) 0 1px, transparent 1px 22px),
-        repeating-linear-gradient(-45deg, rgba(111,20,34,.05) 0 1px, transparent 1px 24px),
-
-        /* base gold gradient */
-        linear-gradient(135deg, var(--gold1), var(--gold2), var(--gold3));
+        radial-gradient(circle at 25% 20%, rgba(255,255,255,.25), transparent 45%),
+        radial-gradient(circle at 80% 30%, rgba(255,255,255,.18), transparent 50%),
+        radial-gradient(circle at 60% 90%, rgba(0,0,0,.12), transparent 55%),
+        repeating-radial-gradient(circle at 30% 30%, rgba(111,20,34,.05) 0 1px, transparent 1px 34px),
+        repeating-radial-gradient(circle at 70% 70%, rgba(111,20,34,.04) 0 1px, transparent 1px 36px),
+        linear-gradient(135deg, var(--g1), var(--g2), var(--g3));
       background-attachment: fixed;
+
+      display:grid;
+      place-items:center;
+      padding:22px;
     }
 
-    .card{
-      width:min(980px, 96vw);
+    /* FRAME = no filled box, just classic border lines + ornaments */
+    .frame{
+      width:min(1100px, 95vw);
+      min-height:min(560px, 78vh);
       position:relative;
-      padding:90px 78px; /* space for ornaments */
+      padding:90px 70px 70px;
     }
 
-    /* Classic double/triple frame like old title cards */
-    .card::before{
+    /* double border lines */
+    .frame::before{
       content:"";
       position:absolute;
-      inset:14px;
-      border:3px solid rgba(111,20,34,.92);
-      box-shadow:
-        inset 0 0 0 2px rgba(255,255,255,.22),
-        inset 0 0 0 10px rgba(111,20,34,.26);
+      inset:26px;
+      border:2px solid rgba(111,20,34,.88);
       pointer-events:none;
     }
-    .card::after{
+    .frame::after{
       content:"";
       position:absolute;
-      inset:34px;
+      inset:44px;
       border:1px solid rgba(111,20,34,.55);
       pointer-events:none;
     }
 
-    /* Title */
+    /* corner ornaments (classic) */
+    .corner{
+      position:absolute;
+      width:150px;
+      height:150px;
+      pointer-events:none;
+      opacity:.95;
+    }
+    .tl{top:18px; left:18px;}
+    .tr{top:18px; right:18px; transform:scaleX(-1);}
+    .bl{bottom:18px; left:18px; transform:scaleY(-1);}
+    .br{bottom:18px; right:18px; transform:scale(-1);}
+
+    svg path{
+      stroke:var(--wine);
+      stroke-width:3.2;
+      fill:none;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+    }
+    .fill{
+      fill:var(--wine);
+      stroke:none;
+      opacity:.95;
+    }
+
     h1{
-      margin:0 0 18px 0;
+      margin:0;
       text-align:center;
-      font-size: clamp(52px, 7vw, 86px);
-      letter-spacing:2px;
+      font-size:clamp(56px, 6.5vw, 92px);
+      letter-spacing:1px;
       font-weight:700;
     }
 
     .entry{
+      margin-top:14px;
       text-align:center;
       font-size:18px;
-      margin-top:8px;
     }
     .entry a{
       color:var(--text);
@@ -95,13 +109,13 @@
       padding-bottom:2px;
       cursor:pointer;
     }
-    .entry a:hover{ border-bottom-color:rgba(0,0,0,1); }
+    .entry a:hover{border-bottom-color:rgba(0,0,0,1);}
 
-    /* Info panel */
+    /* info block */
     .panel{
       display:none;
-      max-width:840px;
-      margin:28px auto 0;
+      max-width:860px;
+      margin:34px auto 0;
       font-size:16px;
       line-height:1.75;
       text-align:left;
@@ -109,9 +123,9 @@
     .panel h2{
       margin:18px 0 6px;
       font-size:18px;
-      letter-spacing:.4px;
+      letter-spacing:.3px;
     }
-    .muted{opacity:.88}
+    .muted{opacity:.9}
     .email{
       margin-top:18px;
       padding-top:14px;
@@ -119,106 +133,112 @@
       font-weight:700;
     }
 
-    /* ORNAMENTS (heavier baroque look) */
-    .orn-top, .orn-bottom{
+    /* small divider ornament (center, top & bottom) */
+    .mid-orn{
       position:absolute;
       left:50%;
       transform:translateX(-50%);
-      width:min(880px, 92%);
-      height:86px;
+      width:min(520px, 70%);
+      height:40px;
       pointer-events:none;
-      opacity:.95;
+      opacity:.9;
     }
-    .orn-top{top:18px}
-    .orn-bottom{bottom:18px; transform:translateX(-50%) rotate(180deg);}
-
-    .orn-left, .orn-right{
-      position:absolute;
-      top:50%;
-      transform:translateY(-50%);
-      width:92px;
-      height:min(540px, 70%);
-      pointer-events:none;
-      opacity:.92;
-    }
-    .orn-left{left:18px}
-    .orn-right{right:18px; transform:translateY(-50%) rotate(180deg);}
-
-    svg path, svg circle{
-      stroke: var(--wine);
-      fill: none;
-      stroke-linecap:round;
-      stroke-linejoin:round;
-    }
-    .fill-wine{fill:var(--wine); stroke:none;}
+    .mid-top{top:52px;}
+    .mid-bot{bottom:52px; transform:translateX(-50%) rotate(180deg);}
   </style>
 </head>
 
 <body>
-  <div class="card">
+  <div class="frame">
 
-    <!-- TOP ornament -->
-    <svg class="orn-top" viewBox="0 0 1200 140" aria-hidden="true">
-      <path d="M70 100
-               C150 10, 280 10, 360 100
-               C430 140, 500 140, 570 100
-               C590 88, 610 88, 630 100
-               C700 140, 770 140, 840 100
-               C920 10, 1050 10, 1130 100" stroke-width="6"/>
-
-      <path d="M600 20
-               C555 55, 555 95, 600 125
-               C645 95, 645 55, 600 20Z" stroke-width="6"/>
-      <circle cx="600" cy="72" r="10" class="fill-wine"/>
-
-      <path d="M220 108 C190 78, 220 52, 260 66 C238 78, 242 96, 220 108Z" class="fill-wine"/>
-      <path d="M980 108 C1010 78, 980 52, 940 66 C962 78, 958 96, 980 108Z" class="fill-wine"/>
-
-      <path d="M130 98 C110 120, 100 128, 86 130" stroke-width="4"/>
-      <path d="M1070 98 C1090 120, 1100 128, 1114 130" stroke-width="4"/>
+    <!-- mid ornaments -->
+    <svg class="mid-orn mid-top" viewBox="0 0 600 60" aria-hidden="true">
+      <path d="M40 40 C120 10, 210 10, 270 40 C290 50, 310 50, 330 40 C390 10, 480 10, 560 40"/>
+      <path d="M300 12 C280 24, 280 42, 300 54 C320 42, 320 24, 300 12Z"/>
+      <circle cx="300" cy="33" r="6" class="fill"/>
     </svg>
 
-    <!-- BOTTOM ornament -->
-    <svg class="orn-bottom" viewBox="0 0 1200 140" aria-hidden="true">
-      <path d="M70 100
-               C150 10, 280 10, 360 100
-               C430 140, 500 140, 570 100
-               C590 88, 610 88, 630 100
-               C700 140, 770 140, 840 100
-               C920 10, 1050 10, 1130 100" stroke-width="6"/>
-
-      <path d="M600 20
-               C555 55, 555 95, 600 125
-               C645 95, 645 55, 600 20Z" stroke-width="6"/>
-      <circle cx="600" cy="72" r="10" class="fill-wine"/>
-
-      <path d="M220 108 C190 78, 220 52, 260 66 C238 78, 242 96, 220 108Z" class="fill-wine"/>
-      <path d="M980 108 C1010 78, 980 52, 940 66 C962 78, 958 96, 980 108Z" class="fill-wine"/>
-
-      <path d="M130 98 C110 120, 100 128, 86 130" stroke-width="4"/>
-      <path d="M1070 98 C1090 120, 1100 128, 1114 130" stroke-width="4"/>
+    <svg class="mid-orn mid-bot" viewBox="0 0 600 60" aria-hidden="true">
+      <path d="M40 40 C120 10, 210 10, 270 40 C290 50, 310 50, 330 40 C390 10, 480 10, 560 40"/>
+      <path d="M300 12 C280 24, 280 42, 300 54 C320 42, 320 24, 300 12Z"/>
+      <circle cx="300" cy="33" r="6" class="fill"/>
     </svg>
 
-    <!-- LEFT ornament -->
-    <svg class="orn-left" viewBox="0 0 120 720" aria-hidden="true">
-      <path d="M76 40
-               C18 120, 18 210, 76 290
-               C96 320, 96 360, 76 390
-               C18 470, 18 560, 76 640" stroke-width="6"/>
-      <circle cx="76" cy="360" r="10" class="fill-wine"/>
-      <path d="M70 150 C48 130, 48 110, 70 96 C92 110, 92 130, 70 150Z" stroke-width="5"/>
-      <path d="M70 560 C48 540, 48 520, 70 506 C92 520, 92 540, 70 560Z" stroke-width="5"/>
+    <!-- corners -->
+    <svg class="corner tl" viewBox="0 0 200 200" aria-hidden="true">
+      <path d="M170 60 C150 20, 95 15, 70 40 C48 62, 54 92, 82 98 C112 104, 126 78, 106 58
+               C90 42, 66 48, 64 68"/>
+      <path d="M60 170 C20 150, 15 95, 40 70 C62 48, 92 54, 98 82 C104 112, 78 126, 58 106
+               C42 90, 48 66, 68 64"/>
+      <path d="M132 132 C118 140, 102 142, 88 136"/>
+      <path d="M136 88 C142 102, 140 118, 132 132"/>
+      <path d="M88 136 C74 130, 62 118, 58 106"/>
+      <path d="M106 58 C118 62, 130 74, 136 88"/>
+      <path d="M52 52 C78 36, 110 36, 148 52"/>
+      <path d="M52 52 C36 78, 36 110, 52 148"/>
+      <path d="M148 52 C158 58, 164 66, 168 78"/>
+      <path d="M52 148 C58 158, 66 164, 78 168"/>
+      <path d="M120 28 C112 38, 112 48, 120 58 C128 48, 128 38, 120 28Z"/>
+      <path d="M28 120 C38 112, 48 112, 58 120 C48 128, 38 128, 28 120Z"/>
+      <circle cx="120" cy="43" r="4" class="fill"/>
+      <circle cx="43" cy="120" r="4" class="fill"/>
     </svg>
 
-    <!-- RIGHT ornament -->
-    <svg class="orn-right" viewBox="0 0 120 720" aria-hidden="true">
-      <path d="M76 40
-               C18 120, 18 210, 76 290
-               C96 320, 96 360, 76 390
-               C18 470, 18 560, 76 640" stroke-width="6"/>
-      <circle cx="76" cy="360" r="10" class="fill-wine"/>
-      <path d="M70 150 C48 130, 48 110, 70 96 C92 110, 92 130, 70 150Z" stroke-width="5"/>
-      <path d="M70 560 C48 540, 48 520, 70 506 C92 520, 92 540, 70 560Z" stroke-width="5"/>
+    <svg class="corner tr" viewBox="0 0 200 200" aria-hidden="true">
+      <path d="M170 60 C150 20, 95 15, 70 40 C48 62, 54 92, 82 98 C112 104, 126 78, 106 58
+               C90 42, 66 48, 64 68"/>
+      <path d="M60 170 C20 150, 15 95, 40 70 C62 48, 92 54, 98 82 C104 112, 78 126, 58 106
+               C42 90, 48 66, 68 64"/>
+      <path d="M132 132 C118 140, 102 142, 88 136"/>
+      <path d="M136 88 C142 102, 140 118, 132 132"/>
+      <path d="M88 136 C74 130, 62 118, 58 106"/>
+      <path d="M106 58 C118 62, 130 74, 136 88"/>
+      <path d="M52 52 C78 36, 110 36, 148 52"/>
+      <path d="M52 52 C36 78, 36 110, 52 148"/>
+      <path d="M148 52 C158 58, 164 66, 168 78"/>
+      <path d="M52 148 C58 158, 66 164, 78 168"/>
+      <path d="M120 28 C112 38, 112 48, 120 58 C128 48, 128 38, 120 28Z"/>
+      <path d="M28 120 C38 112, 48 112, 58 120 C48 128, 38 128, 28 120Z"/>
+      <circle cx="120" cy="43" r="4" class="fill"/>
+      <circle cx="43" cy="120" r="4" class="fill"/>
+    </svg>
+
+    <svg class="corner bl" viewBox="0 0 200 200" aria-hidden="true">
+      <path d="M170 60 C150 20, 95 15, 70 40 C48 62, 54 92, 82 98 C112 104, 126 78, 106 58
+               C90 42, 66 48, 64 68"/>
+      <path d="M60 170 C20 150, 15 95, 40 70 C62 48, 92 54, 98 82 C104 112, 78 126, 58 106
+               C42 90, 48 66, 68 64"/>
+      <path d="M132 132 C118 140, 102 142, 88 136"/>
+      <path d="M136 88 C142 102, 140 118, 132 132"/>
+      <path d="M88 136 C74 130, 62 118, 58 106"/>
+      <path d="M106 58 C118 62, 130 74, 136 88"/>
+      <path d="M52 52 C78 36, 110 36, 148 52"/>
+      <path d="M52 52 C36 78, 36 110, 52 148"/>
+      <path d="M148 52 C158 58, 164 66, 168 78"/>
+      <path d="M52 148 C58 158, 66 164, 78 168"/>
+      <path d="M120 28 C112 38, 112 48, 120 58 C128 48, 128 38, 120 28Z"/>
+      <path d="M28 120 C38 112, 48 112, 58 120 C48 128, 38 128, 28 120Z"/>
+      <circle cx="120" cy="43" r="4" class="fill"/>
+      <circle cx="43" cy="120" r="4" class="fill"/>
+    </svg>
+
+    <svg class="corner br" viewBox="0 0 200 200" aria-hidden="true">
+      <path d="M170 60 C150 20, 95 15, 70 40 C48 62, 54 92, 82 98 C112 104, 126 78, 106 58
+               C90 42, 66 48, 64 68"/>
+      <path d="M60 170 C20 150, 15 95, 40 70 C62 48, 92 54, 98 82 C104 112, 78 126, 58 106
+               C42 90, 48 66, 68 64"/>
+      <path d="M132 132 C118 140, 102 142, 88 136"/>
+      <path d="M136 88 C142 102, 140 118, 132 132"/>
+      <path d="M88 136 C74 130, 62 118, 58 106"/>
+      <path d="M106 58 C118 62, 130 74, 136 88"/>
+      <path d="M52 52 C78 36, 110 36, 148 52"/>
+      <path d="M52 52 C36 78, 36 110, 52 148"/>
+      <path d="M148 52 C158 58, 164 66, 168 78"/>
+      <path d="M52 148 C58 158, 66 164, 78 168"/>
+      <path d="M120 28 C112 38, 112 48, 120 58 C128 48, 128 38, 120 28Z"/>
+      <path d="M28 120 C38 112, 48 112, 58 120 C48 128, 38 128, 28 120Z"/>
+      <circle cx="120" cy="43" r="4" class="fill"/>
+      <circle cx="43" cy="120" r="4" class="fill"/>
     </svg>
 
     <h1>December Club</h1>
@@ -227,9 +247,8 @@
       <a id="openInfo">Welcome to December Club, Click here</a>
     </div>
 
-    <!-- IMPORTANT: FULL TEXT (not summarized) -->
+    <!-- FULL INFO (no summarizing) -->
     <div class="panel" id="info">
-
       <h2>Overview</h2>
       <div class="muted">
         December Club is a private protocol for discreet online meeting coordination and invitation-only occasions.
