@@ -1,149 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
   <title>December Club</title>
 
   <style>
-    :root{
-      --wine:#7a1f2b;
-      --ink:#000;
-      --paper:rgba(255,248,230,0.90);
-      --fallback:#f3e3bb; /* لو الخلفية ما اشتغلت */
-    }
-
     body{
       margin:0;
-      min-height:100vh;
-      font-family:"Times New Roman", serif;
-      color:var(--ink);
-
-      /* خلفية احتياط */
-      background-color: var(--fallback);
-
-      /* الخلفية بالصورة */
+      font-family: "Georgia", serif;
       background-image: url("background.jpg");
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       background-attachment: fixed;
+      color:#111;
     }
 
-    .container{
-      max-width: 980px;
-      margin: 70px auto;
-      padding: 60px 70px;
-      background: var(--paper);
-      border: 2px solid var(--wine);
-      box-sizing: border-box;
+    .frame{
+      max-width: 900px;
+      margin: 80px auto;
+      padding: 60px;
+      background: rgba(255,248,230,0.95);
+      border: 2px solid #7b1f2a;
     }
 
     h1{
       text-align:center;
-      font-size:54px;
-      margin:0 0 18px 0;
-      letter-spacing: 1px;
-    }
-
-    .intro{
-      text-align:center;
-      font-size:18px;
-      line-height:1.8;
-      margin:0 auto 25px auto;
-      max-width: 820px;
-    }
-
-    /* زر الدخول */
-    .enterWrap{ text-align:center; margin:18px 0 10px 0; }
-    .enter{
-      display:inline-block;
-      padding: 12px 18px;
-      border: 2px solid var(--wine);
-      color: var(--ink);
-      text-decoration:none;
-      font-size:16px;
-      background: rgba(255,255,255,0.35);
-      cursor:pointer;
-    }
-    .enter:hover{ background: rgba(255,255,255,0.6); }
-
-    /* محتوى مخفي بالبداية */
-    .hidden{ display:none; }
-
-    h2{
-      font-size: 28px;
-      margin: 40px 0 14px 0;
-      padding-bottom: 8px;
-      border-bottom: 1px solid var(--wine);
+      font-size:48px;
+      margin-bottom:20px;
     }
 
     p{
+      text-align:center;
+      line-height:1.7;
       font-size:18px;
-      line-height:1.85;
-      margin: 10px 0;
     }
 
-    /* نقاط • */
-    ul{
-      margin: 12px 0 10px 0;
-      padding:0;
-      font-size:18px;
-      line-height:1.85;
-    }
-    ul li{
-      list-style:none;
-      margin: 6px 0;
-      position: relative;
-      padding-left: 18px;
-    }
-    ul li::before{
-      content:"•";
-      position:absolute;
-      left:0;
-      top:0;
+    .enterWrap{
+      text-align:center;
+      margin:40px 0;
     }
 
-    /* رسالة خطأ لو الخلفية ما تحملت */
-    .bg-warning{
-      max-width: 980px;
-      margin: 14px auto -40px auto;
-      padding: 12px 14px;
-      border: 1px solid var(--wine);
-      background: rgba(255,255,255,0.75);
-      font-size: 14px;
+    .enter{
+      display:inline-block;
+      padding:14px 26px;
+      border:2px solid #7b1f2a;
+      text-decoration:none;
+      color:#111;
+      font-size:18px;
+      cursor:pointer;
+    }
+
+    .enter:hover{
+      background:#7b1f2a;
+      color:#fff;
+    }
+
+    .hidden{
       display:none;
+    }
+
+    h2{
+      margin-top:60px;
+      font-size:32px;
+      border-bottom:1px solid #7b1f2a;
+      padding-bottom:10px;
+    }
+
+    ul{
+      margin-top:20px;
+      line-height:1.8;
+      font-size:18px;
+    }
+
+    .section{
+      margin-top:40px;
+    }
+
+    .email{
+      text-align:center;
+      font-weight:bold;
+      margin-top:30px;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- يظهر فقط إذا الخلفية ما اشتغلت -->
-  <div class="bg-warning" id="bgWarning">
-    Background image not found. Make sure the file name is <b>background.jpg</b> (not background.jpg.jpg) and it is in the same folder as index.html.
-  </div>
+  <div class="frame">
 
-  <div class="container">
     <h1>December Club</h1>
 
-    <p class="intro">
-      December Club is a private protocol.<br>
-      It is not a platform, not a service, and not a social network.<br>
-      It exists for individuals who require controlled communication, absolute discretion, and the absence of digital trace.
+    <p>December Club is a private protocol.</p>
+    <p>It is not a platform, not a service, and not a social network.</p>
+    <p>
+      It exists for individuals who require controlled communication,
+      absolute discretion, and the absence of digital trace.
     </p>
 
     <div class="enterWrap">
       <a class="enter" id="enterBtn">Welcome to December Club, Click here</a>
     </div>
 
-    <!-- كل البيانات مخفية بالبداية -->
+    <!-- HIDDEN CONTENT -->
     <div id="content" class="hidden">
 
       <h2>What December Club Is</h2>
-      <p>
-        December Club provides a secured, invitation-based environment for private conversations and closed meetings, accessible globally.
+      <p style="text-align:left;">
+        December Club provides a secured, invitation-based environment
+        for private conversations and closed meetings, accessible globally.
       </p>
+
       <ul>
         <li>Members do not create rooms.</li>
         <li>Members do not host freely.</li>
@@ -152,7 +119,6 @@
         <li>No recordings.</li>
         <li>No archives.</li>
         <li>No history.</li>
-        <li>When a meeting ends, it leaves no trace.</li>
       </ul>
 
       <h2>What We Offer</h2>
@@ -162,89 +128,68 @@
       </ul>
 
       <h2>Membership Structure</h2>
-      <p><strong>Annual Membership</strong></p>
       <ul>
+        <li>Annual Membership</li>
         <li>50,000 AED / Year</li>
-        <li>Access is granted upon issuance of your membership number.</li>
+        <li>Access granted upon issuance of membership number</li>
         <li>Invitation is not guaranteed</li>
         <li>Eligibility to request private meetings</li>
         <li>Subject to approval and review</li>
-        <li>Membership does not imply exclusivity.</li>
-        <li>It implies eligibility.</li>
+        <li>Membership implies eligibility, not exclusivity</li>
       </ul>
 
-      <p><strong>Elite</strong></p>
+      <h2>Elite</h2>
       <ul>
-        <li>By invitation or special consideration only.</li>
+        <li>By invitation or special consideration only</li>
         <li>Initial elite term: 6 months</li>
         <li>Continuation subject to approval</li>
         <li>No standard membership required</li>
-        <li>Elite status may be reviewed, renewed, or withdrawn without explanation.</li>
+        <li>Status may be reviewed, renewed, or withdrawn without explanation</li>
       </ul>
 
       <h2>Support the Protocol</h2>
-      <p><strong>General Support</strong></p>
       <ul>
-        <li>Voluntary support only.</li>
-        <li>No membership.</li>
-        <li>No privileges.</li>
-      </ul>
-
-      <p><strong>Special Support</strong></p>
-      <ul>
-        <li>Subject to consideration for Elite status.</li>
-        <li>No guarantees.</li>
-        <li>No obligations.</li>
-        <li>Support does not purchase access.</li>
-        <li>It signals alignment.</li>
+        <li>General Support: voluntary only</li>
+        <li>No membership</li>
+        <li>No privileges</li>
+        <li>Special Support subject to elite consideration</li>
+        <li>Support does not purchase access</li>
+        <li>Support signals alignment</li>
       </ul>
 
       <h2>Selection Process</h2>
       <ul>
-        <li>December Club does not allow direct registration.</li>
-        <li>To be considered, submit your email for review.</li>
-        <li>Requests are evaluated manually</li>
+        <li>No direct registration</li>
+        <li>Email submission required</li>
+        <li>Requests evaluated manually</li>
         <li>Response may take up to two weeks</li>
-        <li>Approval is not guaranteed</li>
+        <li>Approval not guaranteed</li>
         <li>Rejection receives no notification</li>
         <li>Silence indicates non-selection</li>
       </ul>
 
       <h2>Request Consideration</h2>
-      <p><strong>Email:</strong> consideration@decemberclub.co</p>
+      <p class="email">Email: consideration@decemberclub.co</p>
 
       <ul>
         <li>No participant lists</li>
         <li>No visible member counts</li>
         <li>No public interaction</li>
         <li>No discovery mechanisms</li>
-        <li>Only you, your meeting, and the system.</li>
-        <li>Special private occasions are held by invitation only.</li>
-        <li>Attendance is determined solely by the owner.</li>
+        <li>Only you, your meeting, and the system</li>
+        <li>Private occasions by invitation only</li>
+        <li>Attendance determined solely by the owner</li>
       </ul>
 
     </div>
+
   </div>
 
   <script>
-    // 1) زر يظهر البيانات + ينزل لها
-    const btn = document.getElementById("enterBtn");
-    const content = document.getElementById("content");
-
-    btn.addEventListener("click", () => {
-      content.classList.remove("hidden");
-      content.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-
-    // 2) فحص الصورة: لو ما تحملت، نعرض رسالة تنبيه
-    (function checkBackground(){
-      const img = new Image();
-      img.onload = () => {}; // تمام
-      img.onerror = () => {
-        document.getElementById("bgWarning").style.display = "block";
-      };
-      img.src = "background.jpg";
-    })();
+    document.getElementById("enterBtn").onclick = function(){
+      document.getElementById("content").style.display = "block";
+      this.style.display = "none";
+    };
   </script>
 
 </body>
