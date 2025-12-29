@@ -1,224 +1,103 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>December Club</title>
+<meta charset="utf-8">
+<title>December Club</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <style>
-    :root{
-      --wine:#6f1422;
-      --wineSoft: rgba(111,20,34,.55);
-      --text:#0b0b0b;
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
 
-      /* gold */
-      --g1:#f8e7b7;
-      --g2:#e5c368;
-      --g3:#b6842b;
-    }
+  body {
+    font-family: "Times New Roman", Georgia, serif;
+    background: url("background.jpg") center center / cover no-repeat fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+  }
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      color:var(--text);
-      font-family: "Times New Roman", Georgia, serif;
-      display:grid;
-      place-items:center;
-      padding:22px;
+  .content {
+    max-width: 800px;
+    padding: 60px;
+    text-align: center;
+  }
 
-      /* GOLD paper + DAMASK (no circles) */
-      background:
-        radial-gradient(circle at 25% 18%, rgba(255,255,255,.22), transparent 52%),
-        radial-gradient(circle at 85% 35%, rgba(255,255,255,.14), transparent 55%),
-        radial-gradient(circle at 55% 92%, rgba(0,0,0,.10), transparent 55%),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'%3E%3Cg fill='none' stroke='%236f1422' stroke-opacity='0.08' stroke-width='2'%3E%3Cpath d='M110 25c18 0 28 10 28 24 0 9-5 16-12 20 14 6 22 18 22 34 0 22-16 40-38 43 8 6 13 15 13 26 0 15-10 26-26 26s-26-11-26-26c0-11 5-20 13-26-22-3-38-21-38-43 0-16 8-28 22-34-7-4-12-11-12-20 0-14 10-24 28-24'/%3E%3Cpath d='M110 40c-10 0-16 6-16 14 0 7 5 12 12 14'/%3E%3Cpath d='M110 40c10 0 16 6 16 14 0 7-5 12-12 14'/%3E%3Cpath d='M82 103c8 2 14 7 16 14'/%3E%3Cpath d='M138 103c-8 2-14 7-16 14'/%3E%3Cpath d='M95 165c3 6 9 10 15 10s12-4 15-10'/%3E%3C/g%3E%3C/svg%3E"),
-        linear-gradient(135deg, var(--g1), var(--g2), var(--g3));
-      background-attachment: fixed;
-    }
+  h1 {
+    font-size: 72px;
+    margin-bottom: 10px;
+  }
 
-    /* No box. Just layout */
-    .wrap{
-      width:min(1120px, 96vw);
-      min-height:min(620px, 80vh);
-      position:relative;
-      display:grid;
-      align-content:center;
-      justify-items:center;
-      padding:90px 60px 70px;
-    }
+  .enter {
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: underline;
+    margin-bottom: 30px;
+  }
 
-    /* Decorative frame as SVG overlay (THIS is the only "border") */
-    .frame{
-      position:absolute;
-      inset:18px;
-      pointer-events:none;
-      opacity:.98;
-    }
-    .frame .thin{ stroke: var(--wineSoft); stroke-width: 2; fill: none; }
-    .frame .bold{ stroke: var(--wine); stroke-width: 3.5; fill: none; }
-    .frame .fill{ fill: var(--wine); opacity:.95; }
+  .info {
+    display: none;
+    text-align: left;
+    font-size: 16px;
+    line-height: 1.8;
+  }
 
-    h1{
-      margin:0;
-      text-align:center;
-      font-size:clamp(60px, 6vw, 96px);
-      letter-spacing:.8px;
-      font-weight:700;
-    }
-    .entry{
-      margin-top:12px;
-      text-align:center;
-      font-size:18px;
-    }
-    .entry a{
-      color:var(--text);
-      text-decoration:none;
-      border-bottom:1px solid rgba(0,0,0,.55);
-      padding-bottom:2px;
-    }
-    .entry a:hover{ border-bottom-color: rgba(0,0,0,1); }
+  .info h2 {
+    margin-top: 25px;
+    font-size: 18px;
+  }
 
-    /* Info */
-    .panel{
-      display:none;
-      max-width:880px;
-      margin:34px auto 0;
-      font-size:16px;
-      line-height:1.75;
-      text-align:left;
-    }
-    .panel h2{
-      margin:18px 0 6px;
-      font-size:18px;
-      letter-spacing:.3px;
-    }
-    .muted{opacity:.92}
-    .email{
-      margin-top:18px;
-      padding-top:14px;
-      border-top:1px solid rgba(0,0,0,.25);
-      font-weight:700;
-    }
-  </style>
+  .contact {
+    margin-top: 30px;
+    font-weight: bold;
+  }
+</style>
 </head>
 
 <body>
-  <div class="wrap">
 
-    <!-- ONE classic ornate frame (no CSS borders / no square box) -->
-    <svg class="frame" viewBox="0 0 1000 620" preserveAspectRatio="none" aria-hidden="true">
-      <!-- outer + inner fine lines -->
-      <rect x="20" y="20" width="960" height="580" class="bold"/>
-      <rect x="44" y="44" width="912" height="532" class="thin"/>
+<div class="content">
+  <h1>December Club</h1>
 
-      <!-- top center ornament -->
-      <path d="M360 92 C420 64, 580 64, 640 92" class="bold"/>
-      <path d="M500 62 C480 78, 480 106, 500 122 C520 106, 520 78, 500 62 Z" class="bold"/>
-      <circle cx="500" cy="92" r="7" class="fill"/>
+  <div class="enter" onclick="toggleInfo()">
+    Welcome to December Club, Click here
+  </div>
 
-      <!-- bottom center ornament -->
-      <path d="M360 528 C420 556, 580 556, 640 528" class="bold"/>
-      <path d="M500 498 C480 514, 480 542, 500 558 C520 542, 520 514, 500 498 Z" class="bold"/>
-      <circle cx="500" cy="528" r="7" class="fill"/>
+  <div class="info" id="info">
 
-      <!-- Corner acanthus-like flourishes (more classic) -->
-      <!-- TL -->
-      <path d="M78 140
-               C70 95, 95 70, 140 78
-               C110 88, 108 112, 126 124
-               C150 140, 178 118, 170 92
-               C200 130, 170 170, 128 170
-               C110 170, 92 162, 78 140 Z" class="bold"/>
-      <path d="M90 90 C120 86, 132 104, 120 122" class="thin"/>
-      <path d="M78 140 C86 120, 104 110, 122 120" class="thin"/>
+    <h2>Overview</h2>
+    December Club is a private protocol for discreet online meeting coordination and invitation-only occasions.
+    Members do not browse other members, view counts, or see activity—only their own access and the Club’s rules.
 
-      <!-- TR -->
-      <g transform="translate(1000,0) scale(-1,1)">
-        <path d="M78 140
-                 C70 95, 95 70, 140 78
-                 C110 88, 108 112, 126 124
-                 C150 140, 178 118, 170 92
-                 C200 130, 170 170, 128 170
-                 C110 170, 92 162, 78 140 Z" class="bold"/>
-        <path d="M90 90 C120 86, 132 104, 120 122" class="thin"/>
-        <path d="M78 140 C86 120, 104 110, 122 120" class="thin"/>
-      </g>
+    <h2>What We Offer</h2>
+    Only you, your meeting, and the system.<br>
+    Special private occasions are held by invitation only.
+    Attendance is determined solely by the owner.
 
-      <!-- BL -->
-      <g transform="translate(0,620) scale(1,-1)">
-        <path d="M78 140
-                 C70 95, 95 70, 140 78
-                 C110 88, 108 112, 126 124
-                 C150 140, 178 118, 170 92
-                 C200 130, 170 170, 128 170
-                 C110 170, 92 162, 78 140 Z" class="bold"/>
-        <path d="M90 90 C120 86, 132 104, 120 122" class="thin"/>
-        <path d="M78 140 C86 120, 104 110, 122 120" class="thin"/>
-      </g>
+    <h2>Selection Process</h2>
+    Access is reviewed manually. A response may take up to two weeks.
 
-      <!-- BR -->
-      <g transform="translate(1000,620) scale(-1,-1)">
-        <path d="M78 140
-                 C70 95, 95 70, 140 78
-                 C110 88, 108 112, 126 124
-                 C150 140, 178 118, 170 92
-                 C200 130, 170 170, 128 170
-                 C110 170, 92 162, 78 140 Z" class="bold"/>
-        <path d="M90 90 C120 86, 132 104, 120 122" class="thin"/>
-        <path d="M78 140 C86 120, 104 110, 122 120" class="thin"/>
-      </g>
-    </svg>
+    <h2>Membership Structure</h2>
+    <strong>Annual Membership:</strong> Entry is permitted after receiving your card number.<br>
+    <strong>Elite (by owner):</strong> Assigned by the owner through private selection and contribution.
 
-    <h1>December Club</h1>
-
-    <div class="entry">
-      <a id="openInfo">Welcome to December Club, Click here</a>
-    </div>
-
-    <!-- FULL INFO (as agreed — not summarized) -->
-    <div class="panel" id="info">
-      <h2>Overview</h2>
-      <div class="muted">
-        December Club is a private protocol for discreet online meeting coordination and invitation-only occasions.
-        Members do not browse other members, view counts, or see activity—only their own access and the Club’s rules.
-      </div>
-
-      <h2>What We Offer</h2>
-      <div class="muted">
-        Only you, your meeting, and the system.<br>
-        Special private occasions are held by invitation only.
-        Attendance is determined solely by the owner.
-      </div>
-
-      <h2>Selection Process</h2>
-      <div class="muted">
-        Access is reviewed manually. A response may take up to two weeks (maximum).
-      </div>
-
-      <h2>Membership Structure</h2>
-      <div class="muted">
-        <strong>Annual Membership:</strong> Entry is permitted after you receive your card number.
-        Invitation is not guaranteed.<br>
-        <strong>Elite (by owner):</strong> Assigned by the owner through private selection and contribution.
-      </div>
-
-      <div class="email">
-        Contact: <span class="muted">consideration@decemberclub.co</span>
-      </div>
+    <div class="contact">
+      Contact: consideration@decemberclub.co
     </div>
 
   </div>
+</div>
 
-  <script>
-    const btn = document.getElementById('openInfo');
-    const info = document.getElementById('info');
+<script>
+function toggleInfo() {
+  const info = document.getElementById("info");
+  info.style.display = info.style.display === "block" ? "none" : "block";
+}
+</script>
 
-    btn.addEventListener('click', () => {
-      const show = info.style.display !== 'block';
-      info.style.display = show ? 'block' : 'none';
-      if(show) info.scrollIntoView({behavior:'smooth', block:'start'});
-    });
-  </script>
 </body>
 </html>
